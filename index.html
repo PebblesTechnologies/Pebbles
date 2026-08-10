@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pebbles Technologies</title>
+<meta name="description" content="Pebbles Technologies — marketplace and digital services, facility maintenance, AeroWater atmospheric water systems, and premium chickpea trade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #eef3f4;
+    --sky-deep: #e2ebec;
+    --ink: #24343a;
+    --ink-soft: #5c6f76;
+    --water: #4f8f8a;
+    --water-dim: rgba(79, 143, 138, 0.12);
+    --card-bg: #ffffff;
+    --card-border: rgba(79, 143, 138, 0.16);
+    --pebble-1: #a9b4ab;
+    --pebble-2: #8a97a0;
+    --pebble-3: #c7c2b4;
+    --pebble-4: #93968a;
+    --pebble-5: #b7ada0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  html, body { height: 100%; }
+
+  body {
+    background: linear-gradient(180deg, var(--sky) 0%, var(--sky-deep) 100%);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- nav ---------- */
+
+  nav.top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(238, 243, 244, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(79, 143, 138, 0.14);
+  }
+
+  nav.top .container {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: var(--water);
+  }
+
+  @media (max-width: 560px) {
+    .nav-links { gap: 16px; }
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 96px 24px 80px;
+    text-align: center;
+  }
+
+  .ripples {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .ripples span {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    border: 1.5px solid rgba(79, 143, 138, 0.24);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 6s ease-out infinite;
+  }
+
+  .ripples span:nth-child(1) { animation-delay: 0s; }
+  .ripples span:nth-child(2) { animation-delay: 2s; }
+  .ripples span:nth-child(3) { animation-delay: 4s; }
+
+  @keyframes ripple {
+    0% { width: 60px; height: 60px; opacity: 0.65; }
+    100% { width: 620px; height: 620px; opacity: 0; }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(79, 143, 138, 0.3);
+    border-radius: 999px;
+    background: var(--water-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--water);
+    margin-bottom: 32px;
+  }
+
+  .status .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--water);
+    animation: pulse 2s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(79, 143, 138, 0.45); }
+    70% { box-shadow: 0 0 0 8px rgba(79, 143, 138, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 143, 138, 0); }
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+
+  p.tagline {
+    margin-top: 20px;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  a.mail {
+    color: var(--water);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(79, 143, 138, 0.35);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  a.mail:hover,
+  a.mail:focus-visible {
+    color: #2f4d49;
+    border-color: #2f4d49;
+  }
+
+  a.mail:focus-visible {
+    outline: 2px solid var(--water);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .pebbles {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 48px;
+    height: 46px;
+  }
+
+  .pebbles svg {
+    display: block;
+    filter: drop-shadow(0 3px 2px rgba(36, 52, 58, 0.12));
+  }
+
+  @media (max-width: 480px) {
+    .pebbles { transform: scale(0.8); margin-top: 36px; }
+  }
+
+  /* ---------- section shell ---------- */
+
+  section.block {
+    padding: 72px 0;
+  }
+
+  section.block + section.block {
+    border-top: 1px solid rgba(79, 143, 138, 0.14);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--water);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+
+  .section-lead {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  /* ---------- about ---------- */
+
+  .about-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .about-stat {
+    padding: 20px 0;
+    border-top: 1px solid rgba(79, 143, 138, 0.2);
+  }
+
+  .about-stat .n {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .about-stat .l {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  /* ---------- services ---------- */
+
+  .services-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 26px 24px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .service-card:hover {
+    border-color: rgba(79, 143, 138, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .service-icon svg { display: block; }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+
+  .service-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- contact / footer ---------- */
+
+  .contact-block {
+    text-align: center;
+  }
+
+  .contact-block .section-lead {
+    margin: 0 auto;
+  }
+
+  .contact-mail {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 1.15rem;
+  }
+
+  footer {
+    padding: 32px 24px 40px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: #8f9aa0;
+    border-top: 1px solid rgba(79, 143, 138, 0.14);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ripples span { animation: none; opacity: 0; }
+    .status .dot { animation: none; }
+    .hero-inner { animation: none; }
+    .service-card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="top">
+    <div class="container">
+      <a class="brand" href="#top">Pebbles Technologies</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="ripples" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="hero-inner">
+      <span class="status"><span class="dot"></span>Building in progress</span>
+      <h1>Pebbles Technologies</h1>
+      <p class="tagline">
+        A Riyadh-based venture across digital services, facility maintenance,
+        atmospheric water systems, and premium food trade — distinct lines,
+        one foundation.
+      </p>
+    </div>
+
+    <div class="pebbles" aria-hidden="true">
+      <svg width="54" height="30" viewBox="0 0 54 30"><ellipse cx="27" cy="20" rx="26" ry="9" fill="#a9b4ab"/></svg>
+      <svg width="40" height="34" viewBox="0 0 40 34"><ellipse cx="20" cy="22" rx="19" ry="11" fill="#8a97a0"/></svg>
+      <svg width="46" height="24" viewBox="0 0 46 24"><ellipse cx="23" cy="16" rx="22" ry="7.5" fill="#c7c2b4"/></svg>
+      <svg width="34" height="30" viewBox="0 0 34 30"><ellipse cx="17" cy="20" rx="16" ry="9.5" fill="#93968a"/></svg>
+      <svg width="42" height="22" viewBox="0 0 42 22"><ellipse cx="21" cy="15" rx="20" ry="7" fill="#b7ada0"/></svg>
+      <svg width="30" height="26" viewBox="0 0 30 26"><ellipse cx="15" cy="17" rx="14" ry="8.5" fill="#a9b4ab"/></svg>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="block" id="about">
+      <div class="container">
+        <p class="eyebrow">About</p>
+        <h2>Four lines, one principle</h2>
+        <p class="section-lead">
+          Pebbles Technologies brings together businesses that don't share an
+          industry but share a way of working: durable, purpose-built, and
+          proven under real conditions. Like the pebbles that give the
+          company its name, each line stands on its own weight while
+          resting on the same foundation.
+        </p>
+        <div class="about-grid">
+          <div class="about-stat">
+            <div class="n">04</div>
+            <div class="l">Active business lines, from digital services to food trade</div>
+          </div>
+          <div class="about-stat">
+            <div class="n">RUH</div>
+            <div class="l">Headquartered in Riyadh, Kingdom of Saudi Arabia</div>
+          </div>
+          <div class="about-stat">
+            <div class="n">2026</div>
+            <div class="l">Founded, and actively building</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="services">
+      <div class="container">
+        <p class="eyebrow">Services</p>
+        <h2>What we run</h2>
+        <p class="section-lead">
+          Four independent lines of business, each with its own team,
+          standards, and customers.
+        </p>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(169,180,171,0.28);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c6f76" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8l1.5-4h13L20 8"/>
+                <path d="M4 8h16v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8z"/>
+                <path d="M9 12a3 3 0 0 0 6 0"/>
+              </svg>
+            </div>
+            <h3>Marketplace &amp; digital services</h3>
+            <p>A vendor marketplace and service-booking platform connecting buyers with trusted local providers, end to end.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(138,151,160,0.28);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c6f76" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-5.6 5.6a1.5 1.5 0 0 0 2.1 2.1l5.6-5.6a4 4 0 0 1 5.4-5.4l-2.6 2.6-2-2z"/>
+              </svg>
+            </div>
+            <h3>Facility maintenance &amp; operations</h3>
+            <p>Scheduled and on-demand maintenance for commercial and industrial sites, from routine upkeep to emergency callouts.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(79,143,138,0.16);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f8f8a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3s6 6.4 6 10.8A6 6 0 0 1 6 13.8C6 9.4 12 3 12 3z"/>
+              </svg>
+            </div>
+            <h3>AeroWater atmospheric systems</h3>
+            <p>Design, installation, and upkeep of atmospheric water generation plants that draw clean drinking water from the air.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon" style="background: rgba(199,194,180,0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c6f76" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c-4.4-2-7-5.4-7-9.4C5 7.6 8.1 4 12 3c3.9 1 7 4.6 7 8.6 0 4-2.6 7.4-7 9.4z"/>
+                <path d="M12 21v-8"/>
+                <path d="M12 13c0-3 2-4.5 4-5.5"/>
+              </svg>
+            </div>
+            <h3>Premium chickpea trade</h3>
+            <p>Sourcing and import of high-grade chickpeas into Saudi Arabia, graded and packed to premium food-service and retail standards.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block contact-block" id="contact">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h2>Get in touch</h2>
+        <p class="section-lead">
+          Reach out about any of our four lines — marketplace, maintenance,
+          AeroWater, or chickpea trade.
+        </p>
+        <a class="mail contact-mail" href="mailto:info@pebblestechnologies.com">info@pebblestechnologies.com</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© 2026 Pebbles Technologies</footer>
+
+</body>
+</html>
