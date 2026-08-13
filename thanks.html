@@ -1,49 +1,149 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; base-uri 'self'; object-src 'none'; frame-ancestors 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
 <title>Message sent — Pebbles Technologies</title>
 <meta name="robots" content="noindex">
+
 <link rel="icon" type="image/png" href="assets/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="assets/site.css">
+
+<style>
+  /*
+   * Message confirmation page
+   * Styled to match the Pebbles Technologies homepage:
+   * restrained, modern, spacious and minimal.
+   */
+
+  main {
+    min-height: calc(100vh - 150px);
+    display: flex;
+    align-items: center;
+  }
+
+  .confirmation {
+    width: 100%;
+    max-width: 760px;
+    padding: 100px 0 120px;
+  }
+
+  .confirmation .code {
+    margin: 0 0 18px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .confirmation h1 {
+    max-width: 700px;
+    margin: 0 0 24px;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .confirmation p.message {
+    max-width: 590px;
+    margin: 0 0 38px;
+    font-size: 18px;
+    line-height: 1.65;
+    opacity: 0.7;
+  }
+
+  .confirmation .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.10);
+  }
+
+  @media (max-width: 700px) {
+    main {
+      min-height: calc(100vh - 130px);
+    }
+
+    .confirmation {
+      padding: 70px 0 90px;
+    }
+
+    .confirmation h1 {
+      font-size: clamp(40px, 12vw, 58px);
+    }
+
+    .confirmation p.message {
+      font-size: 16px;
+    }
+  }
+</style>
 </head>
+
 <body>
 
   <nav class="top">
     <div class="nav-container">
+
       <a class="brand-mark" href="index.html">
-        <img src="assets/logo.png" alt="Pebbles Technologies" width="34" height="34" style="display:block; object-fit:contain;">
+        <img
+          src="assets/logo.png"
+          alt="Pebbles Technologies"
+          width="34"
+          height="34"
+          style="display:block; object-fit:contain;"
+        >
         <span class="brand">Pebbles Technologies</span>
       </a>
+
       <ul class="nav-links">
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
+
     </div>
   </nav>
 
+
   <main>
-    <div class="container notfound">
-      <p class="code">Sent</p>
-      <h1>Thanks — we've got your message</h1>
-      <p>
-        We'll get back to you at the email address you provided, usually
-        within a couple of business days.
+    <div class="container confirmation">
+
+      <p class="code">Message received</p>
+
+      <h1>Thanks — we've got your message.</h1>
+
+      <p class="message">
+        We'll get back to you at the email address you provided,
+        usually within a couple of business days.
       </p>
-      <a class="btn" href="index.html">Back to homepage</a>
+
+      <a class="btn" href="index.html">
+        Back to homepage
+      </a>
+
     </div>
   </main>
 
+
   <footer>
-    © 2026 Pebbles Technologies · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+    © 2026 Pebbles Technologies
   </footer>
 
 </body>
 </html>
+```
