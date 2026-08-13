@@ -1,0 +1,146 @@
+:root {
+  --sky: #eef3f4;
+  --sky-deep: #e2ebec;
+  --ink: #24343a;
+  --ink-soft: #5c6f76;
+  --water: #4f8f8a;
+  --card-bg: #ffffff;
+  --card-border: rgba(79, 143, 138, 0.16);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  background: linear-gradient(180deg, var(--sky) 0%, var(--sky-deep) 100%);
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--water); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+nav.top {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(79, 143, 138, 0.14);
+}
+
+nav.top .container {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+nav.top img { display: block; }
+
+nav.top .brand {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+main {
+  flex: 1;
+  padding: 56px 0 80px;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--water);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.updated {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 32px 0 10px;
+  letter-spacing: -0.01em;
+}
+
+p, li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+
+ul { padding-left: 22px; }
+
+.notfound {
+  text-align: center;
+  padding: 90px 0 100px;
+}
+
+.notfound .code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--water);
+  margin-bottom: 14px;
+}
+
+.notfound h1 { margin-bottom: 14px; }
+
+.notfound p { max-width: 420px; margin: 0 auto 28px; }
+
+.btn {
+  display: inline-block;
+  padding: 11px 22px;
+  background: var(--water);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14.5px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover, .btn:focus-visible {
+  background: #2f4d49;
+}
+
+footer {
+  padding: 32px 24px 40px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #8f9aa0;
+  border-top: 1px solid rgba(79, 143, 138, 0.14);
+}
+
+footer a {
+  color: #8f9aa0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+footer a:hover, footer a:focus-visible {
+  color: var(--water);
+}
