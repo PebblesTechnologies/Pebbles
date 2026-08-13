@@ -1,0 +1,4 @@
+Contact: mailto:info@pebblestechnologies.com
+Expires: 2027-08-13T15:55:10.000Z
+Preferred-Languages: en, ar
+Canonical: https://www.pebblestechnologies.com/.well-known/security.txt
