@@ -595,11 +595,14 @@
       <div class="eyebrow">Contact Us</div>
       <h2>Tell us what you need</h2>
       <p style="color:var(--ink-soft);margin:12px 0 26px;">Pick a business line and send us a few details — we'll route it to the right team.</p>
-      <form onsubmit="event.preventDefault(); this.querySelector('.submit-note').style.display='block';">
-        <div class="field"><label>Full name</label><input type="text" placeholder="Your name" required></div>
-        <div class="field"><label>Email or phone</label><input type="text" placeholder="How can we reach you?" required></div>
+      <form id="contact-form" action="https://formsubmit.co/ajax/info@pebblestechnologies.com" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry — Pebbles Technologies website">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="field"><label>Email or phone</label><input type="text" name="contact" placeholder="How can we reach you?" required></div>
         <div class="field"><label>Which business is this about?</label>
-          <select>
+          <select name="business">
             <option>Water Treatment &amp; Desalination</option>
             <option>Contracting &amp; Building Maintenance</option>
             <option>Food Services &amp; Trading</option>
@@ -609,10 +612,49 @@
             <option>Consultancy</option>
           </select>
         </div>
-        <div class="field"><label>Message</label><textarea rows="4" placeholder="Tell us a bit about what you need"></textarea></div>
+        <div class="field"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us a bit about what you need"></textarea></div>
         <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
-        <p class="submit-note" style="display:none;color:var(--water);font-size:13.5px;margin-top:12px;">Thanks — this is a demo form. Connect it to your email or CRM to go live.</p>
+        <p class="submit-note submit-note-ok" style="display:none;color:var(--water);font-size:13.5px;margin-top:12px;">Thanks — your message has been sent. We'll get back to you shortly.</p>
+        <p class="submit-note submit-note-err" style="display:none;color:#b3423a;font-size:13.5px;margin-top:12px;">Something went wrong sending your message. Please try again, or email us directly at info@pebblestechnologies.com.</p>
       </form>
+      <script>
+        (function(){
+          var form = document.getElementById('contact-form');
+          if(!form) return;
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var okNote = form.querySelector('.submit-note-ok');
+            var errNote = form.querySelector('.submit-note-err');
+            var btn = form.querySelector('button[type="submit"]');
+            okNote.style.display = 'none';
+            errNote.style.display = 'none';
+            var originalLabel = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            fetch(form.action, {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(form)
+            })
+            .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+            .then(function(result){
+              btn.disabled = false;
+              btn.textContent = originalLabel;
+              if(result.ok){
+                form.reset();
+                okNote.style.display = 'block';
+              } else {
+                errNote.style.display = 'block';
+              }
+            })
+            .catch(function(){
+              btn.disabled = false;
+              btn.textContent = originalLabel;
+              errNote.style.display = 'block';
+            });
+          });
+        })();
+      </script>
     </div>
     <div class="contact-info" data-reveal>
       <div class="info-item">
