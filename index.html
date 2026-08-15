@@ -151,9 +151,9 @@
   .sectors{
     margin-top:clamp(32px,5.5vh,48px);
     display:flex;
-    gap:36px;
+    gap:22px;
     justify-content:center;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
   }
   .sector{
     display:flex;
@@ -162,8 +162,8 @@
     gap:10px;
   }
   .sector-circle{
-    width:clamp(112px,14vw,150px);
-    height:clamp(112px,14vw,150px);
+    width:clamp(76px,8.5vw,96px);
+    height:clamp(76px,8.5vw,96px);
     border-radius:50%;
     background:var(--sand);
     border:1px solid var(--line);
@@ -192,16 +192,16 @@
     background:linear-gradient(180deg, rgba(17,41,34,0) 42%, rgba(8,25,17,0.74) 100%);
   }
   .sector-circle .sector-label{
-    position:absolute;
-    left:0; right:0;
-    bottom:11px;
-    text-align:center;
+    display:none;
+  }
+  .sector-name{
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size:clamp(12.5px,1.3vw,14.5px);
-    color:var(--white);
+    font-size:clamp(14px,1.6vw,17px);
+    color:var(--navy);
     letter-spacing:0.01em;
-    z-index:2;
+    text-align:center;
+    line-height:1.2;
   }
   .sector-cta{
     display:inline-flex;
@@ -476,18 +476,39 @@
   .brand{margin-bottom:clamp(16px,3vh,28px);}
   .sectors{margin-top:clamp(24px,4vh,38px); gap:clamp(28px,5vw,56px);}
   .sector{display:flex;flex-direction:column;align-items:center;gap:10px;}
-  .sector-circle{width:clamp(180px,24vw,300px);height:clamp(180px,24vw,300px);border-radius:0;background:transparent;border:0;box-shadow:none;overflow:visible;position:relative;}
+  .sector-circle{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:0;background:transparent;border:0;box-shadow:none;overflow:visible;position:relative;}
   .sector-circle:hover,.sector-circle:focus-visible{transform:translateY(-5px);box-shadow:none;outline:none;}
   .sector-circle .sector-overlay{display:none;}
   .sector-circle .sector-label{display:none;}
   .sector-circle svg.sector-art{border-radius:18px;box-shadow:0 12px 32px rgba(17,41,34,.14);transition:transform .25s ease,box-shadow .25s ease;}
   .sector-circle:hover svg.sector-art,.sector-circle:focus-visible svg.sector-art{transform:scale(1.025);box-shadow:0 18px 40px rgba(17,41,34,.2);}
-  .sector-cta{flex-direction:column-reverse;gap:5px;font-size:12px;letter-spacing:.1em;}
-  .sector-cta svg{width:18px!important;height:18px!important;transform:rotate(-90deg);}
+  .sector-cta{
+    position:absolute;
+    left:50%;
+    right:auto;
+    bottom:9px;
+    transform:translateX(-50%);
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:999px;
+    background:rgba(20,35,30,.34);
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 3px 12px rgba(0,0,0,.18);
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
+    text-align:center;
+    font-size:10px;
+    line-height:1;
+    letter-spacing:.08em;
+    color:#fff;
+    text-decoration:none;
+    z-index:4;
+    text-shadow:0 1px 4px rgba(0,0,0,.45);
+  }
   @media (max-width:560px){
     .brand img{height:110px;}
-    .sector-circle{width:150px;height:150px;}
-    .sectors{gap:22px;}
+    .sector-circle{width:120px;height:120px;}
+    .sectors{gap:18px;}
   }
 </style>
 </head>
@@ -524,10 +545,9 @@
           </svg>
           <div class="sector-overlay"></div>
           <span class="sector-label">RO Sector</span>
+          <span class="sector-cta">Click here</span>
         </div>
-        <span class="sector-cta">Click here
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <span class="sector-name">RO Sector</span>
       </div>
       <div class="sector">
         <div class="sector-circle" onclick="openFoodsModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){openFoodsModal();}" aria-haspopup="dialog" aria-label="View Foods Sector product range">
@@ -550,10 +570,9 @@
           </svg>
           <div class="sector-overlay"></div>
           <span class="sector-label">Foods Sector</span>
+          <span class="sector-cta">Click here</span>
         </div>
-        <span class="sector-cta">Click here
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <span class="sector-name">Foods Sector</span>
       </div>
     </div>
   </div>
@@ -573,7 +592,10 @@
 
     <div class="divider-or">OR</div>
 
-    <form onsubmit="event.preventDefault(); alert('Thank you — we will be in touch soon.');">
+    <form action="https://formsubmit.co/info@pebblestechnologies.com" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry from Pebbles Technologies website">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
       <div class="field">
         <label for="name">Name</label>
         <input id="name" name="name" type="text" placeholder="Your full name" required>
@@ -595,7 +617,7 @@
   <div class="ro-modal">
     <button class="ro-modal-close" onclick="closeRoModal()" aria-label="Close">&times;</button>
     <span class="ro-modal-eyebrow">RO Sector</span>
-    <h3 id="ro-modal-title">Products &amp; Components Range</h3>
+    <h3 id="ro-modal-title">Products and Services We will Bring to Saudi Arabia</h3>
     <p class="ro-modal-sub">A preview of what our Reverse Osmosis &amp; water treatment sector will bring to Saudi Arabia — components, media, chemicals and equipment across the full treatment line.</p>
     <div class="ro-categories">
       <div class="ro-cat"><span class="dot"></span><span><strong>R.O. / UF Membranes</strong><small>Toray, Hydranautics/Nitto, Dupont/Filmtec, Suez, LG Chem &amp; more</small></span></div>
@@ -611,6 +633,7 @@
       <div class="ro-cat"><span class="dot"></span><span><strong>PVC Pipe &amp; Fittings</strong><small>Hydroseal, +GF+ Swiss, Sanking Taiwan &amp; more</small></span></div>
       <div class="ro-cat"><span class="dot"></span><span><strong>Laboratory Instruments</strong><small>Hach, Millipore/Merck, Sartorius &amp; more</small></span></div>
       <div class="ro-cat"><span class="dot"></span><span><strong>Beverage Equipment &amp; Lines</strong><small>Bottling, filling, water &amp; syrup treatment lines</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>RO Plant Installation &amp; Technical Support</strong><small>Professional RO plant installation, commissioning, and support for reliable, efficient, long-term performance.</small></span></div>
     </div>
     <div class="ro-modal-banner">
       <p>Coming soon — <span>everything you need, right here in Saudi Arabia.</span></p>
