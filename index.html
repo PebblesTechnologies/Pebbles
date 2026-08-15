@@ -151,34 +151,174 @@
   .sectors{
     margin-top:clamp(32px,5.5vh,48px);
     display:flex;
-    gap:24px;
+    gap:36px;
     justify-content:center;
     flex-wrap:wrap;
   }
+  .sector{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
   .sector-circle{
-    width:clamp(110px,14vw,142px);
-    height:clamp(110px,14vw,142px);
+    width:clamp(112px,14vw,150px);
+    height:clamp(112px,14vw,150px);
     border-radius:50%;
-    background:var(--white);
+    background:var(--sand);
     border:1px solid var(--line);
     box-shadow:var(--shadow);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:12px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .sector-circle:hover{
+  .sector-circle:hover,
+  .sector-circle:focus-visible{
     transform:translateY(-4px);
     box-shadow:0 16px 36px rgba(17,41,34,0.2);
+    outline:none;
   }
-  .sector-circle span{
+  .sector-circle svg.sector-art{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .sector-circle .sector-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(17,41,34,0) 42%, rgba(8,25,17,0.74) 100%);
+  }
+  .sector-circle .sector-label{
+    position:absolute;
+    left:0; right:0;
+    bottom:11px;
+    text-align:center;
     font-family:'Fraunces', serif;
     font-weight:600;
-    font-size:clamp(13px,1.4vw,15px);
-    color:var(--navy);
+    font-size:clamp(12.5px,1.3vw,14.5px);
+    color:var(--white);
     letter-spacing:0.01em;
+    z-index:2;
+  }
+  .sector-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Work Sans', sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--water);
+  }
+  .sector-cta svg{width:11px;height:11px;}
+
+  /* ---------- RO SECTOR MODAL ---------- */
+  .ro-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(8,25,17,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:60;
+  }
+  .ro-modal-overlay.open{display:flex;}
+  .ro-modal{
+    background:var(--white);
+    border-radius:20px;
+    width:100%;
+    max-width:660px;
+    max-height:86vh;
+    overflow-y:auto;
+    padding:32px 26px 28px;
+    position:relative;
+    box-shadow:0 30px 70px rgba(8,25,17,0.4);
+  }
+  .ro-modal-close{
+    position:absolute;
+    top:14px;
+    right:16px;
+    background:none;
+    border:none;
+    font-size:22px;
+    line-height:1;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:6px;
+  }
+  .ro-modal-close:hover{color:var(--navy);}
+  .ro-modal-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--water);
+    margin-bottom:10px;
+  }
+  .ro-modal-eyebrow::before{content:"";width:20px;height:2px;background:var(--gold);display:inline-block;}
+  .ro-modal h3{
+    font-size:clamp(22px,3.2vw,28px);
+    font-weight:600;
+    color:var(--navy);
+  }
+  .ro-modal p.ro-modal-sub{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:8px 0 22px;
+    max-width:520px;
+  }
+  .ro-categories{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px 16px;
+  }
+  .ro-cat{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    font-size:13.5px;
+    color:var(--ink);
+    background:var(--sand);
+  }
+  .ro-cat .dot{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--gold);
+    margin-top:5px;
+    flex:none;
+  }
+  .ro-cat strong{display:block; color:var(--navy); font-weight:600; margin-bottom:2px;}
+  .ro-cat small{color:var(--ink-soft); font-size:12px; line-height:1.5; display:block;}
+  .ro-modal-banner{
+    margin-top:24px;
+    padding:16px 18px;
+    border-radius:12px;
+    background:linear-gradient(135deg, rgba(51,107,90,0.10), rgba(156,133,82,0.10));
+    border:1px solid var(--line);
+    text-align:center;
+  }
+  .ro-modal-banner p{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(14.5px,2vw,17px);
+    color:var(--navy);
+  }
+  .ro-modal-banner p span{color:var(--water); font-style:normal; font-weight:600;}
+  @media (max-width:560px){
+    .ro-categories{grid-template-columns:1fr;}
+    .ro-modal{padding:26px 18px 22px;}
   }
 
   .scroll-hint{
@@ -330,6 +470,25 @@
     .tagline{margin-top:16px;}
     .sectors{margin-top:24px;}
   }
+
+  /* Final visual refinements */
+  .brand img{height:clamp(130px,18vh,190px); width:auto;}
+  .brand{margin-bottom:clamp(16px,3vh,28px);}
+  .sectors{margin-top:clamp(24px,4vh,38px); gap:clamp(28px,5vw,56px);}
+  .sector{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .sector-circle{width:clamp(180px,24vw,300px);height:clamp(180px,24vw,300px);border-radius:0;background:transparent;border:0;box-shadow:none;overflow:visible;position:relative;}
+  .sector-circle:hover,.sector-circle:focus-visible{transform:translateY(-5px);box-shadow:none;outline:none;}
+  .sector-circle .sector-overlay{display:none;}
+  .sector-circle .sector-label{display:none;}
+  .sector-circle svg.sector-art{border-radius:18px;box-shadow:0 12px 32px rgba(17,41,34,.14);transition:transform .25s ease,box-shadow .25s ease;}
+  .sector-circle:hover svg.sector-art,.sector-circle:focus-visible svg.sector-art{transform:scale(1.025);box-shadow:0 18px 40px rgba(17,41,34,.2);}
+  .sector-cta{flex-direction:column-reverse;gap:5px;font-size:12px;letter-spacing:.1em;}
+  .sector-cta svg{width:18px!important;height:18px!important;transform:rotate(-90deg);}
+  @media (max-width:560px){
+    .brand img{height:110px;}
+    .sector-circle{width:150px;height:150px;}
+    .sectors{gap:22px;}
+  }
 </style>
 </head>
 <body>
@@ -345,11 +504,57 @@
 
     <h1 class="coming-soon">COMING SOON</h1>
     <p class="location">Riyadh, Saudi Arabia</p>
-    <p class="tagline">Something Big &amp; Special</p>
 
     <div class="sectors">
-      <div class="sector-circle"><span>RO Sector</span></div>
-      <div class="sector-circle"><span>Foods Sector</span></div>
+      <div class="sector">
+        <div class="sector-circle" onclick="openRoModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){openRoModal();}" aria-haspopup="dialog" aria-label="View RO Sector product range">
+          <svg class="sector-art" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="120" fill="#F1EEE0"/>
+            <rect x="0" y="90" width="120" height="30" fill="#DBE1CE"/>
+            <path d="M79 8 C79 8 68 22 68 30 a11 11 0 0 0 22 0 C90 22 79 8 79 8 Z" fill="#D8C79E"/>
+            <rect x="27" y="40" width="27" height="50" rx="7" fill="#336B5A"/>
+            <ellipse cx="40.5" cy="40" rx="13.5" ry="7" fill="#3E8069"/>
+            <rect x="27" y="60" width="27" height="6" fill="#9C8552"/>
+            <circle cx="40.5" cy="52" r="2.3" fill="#F1EEE0"/>
+            <rect x="65" y="30" width="27" height="60" rx="7" fill="#112922"/>
+            <ellipse cx="78.5" cy="30" rx="13.5" ry="7" fill="#1B3A2F"/>
+            <rect x="65" y="52" width="27" height="6" fill="#9C8552"/>
+            <circle cx="78.5" cy="42" r="2.3" fill="#F1EEE0"/>
+            <rect x="54" y="72" width="11" height="6" fill="#9C8552"/>
+          </svg>
+          <div class="sector-overlay"></div>
+          <span class="sector-label">RO Sector</span>
+        </div>
+        <span class="sector-cta">Click here
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+      <div class="sector">
+        <div class="sector-circle" onclick="openFoodsModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){openFoodsModal();}" aria-haspopup="dialog" aria-label="View Foods Sector product range">
+          <svg class="sector-art" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="120" fill="#F1EEE0"/>
+            <path d="M14 76 Q60 106 106 76 L106 92 Q60 118 14 92 Z" fill="#7C6A44"/>
+            <path d="M16 73 Q60 100 104 73 L100 85 Q60 106 20 85 Z" fill="#9C8552"/>
+            <path d="M16 73 Q60 100 104 73 Q60 84 16 73 Z" fill="#C9AE7C"/>
+            <ellipse cx="34" cy="60" rx="7.5" ry="7" fill="#D8C79E"/>
+            <path d="M34 53 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="50" cy="48" rx="7.5" ry="7" fill="#E4D2A0"/>
+            <path d="M50 41 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="67" cy="50" rx="7.5" ry="7" fill="#C9AE7C"/>
+            <path d="M67 43 q2 -3 4 -1" stroke="#7C6A44" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="83" cy="60" rx="7.5" ry="7" fill="#D8C79E"/>
+            <path d="M83 53 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="42" cy="66" rx="7" ry="6.5" fill="#B98D55"/>
+            <ellipse cx="58" cy="62" rx="7" ry="6.5" fill="#E4D2A0"/>
+            <ellipse cx="75" cy="68" rx="7" ry="6.5" fill="#C9AE7C"/>
+          </svg>
+          <div class="sector-overlay"></div>
+          <span class="sector-label">Foods Sector</span>
+        </div>
+        <span class="sector-cta">Click here
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
     </div>
   </div>
 
@@ -385,6 +590,84 @@
     </form>
   </div>
 </section>
+
+<div class="ro-modal-overlay" id="ro-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ro-modal-title">
+  <div class="ro-modal">
+    <button class="ro-modal-close" onclick="closeRoModal()" aria-label="Close">&times;</button>
+    <span class="ro-modal-eyebrow">RO Sector</span>
+    <h3 id="ro-modal-title">Products &amp; Components Range</h3>
+    <p class="ro-modal-sub">A preview of what our Reverse Osmosis &amp; water treatment sector will bring to Saudi Arabia — components, media, chemicals and equipment across the full treatment line.</p>
+    <div class="ro-categories">
+      <div class="ro-cat"><span class="dot"></span><span><strong>R.O. / UF Membranes</strong><small>Toray, Hydranautics/Nitto, Dupont/Filmtec, Suez, LG Chem &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>R.O. Pressure Vessels</strong><small>Codeline, ROPV, Ecoline, Wave, ACM Rocket &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Filtration Media</strong><small>CABOT-Norit, Clack Corp., Carbon Activated, Jacobi &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>R.O. Chemicals</strong><small>Antiscalants, cleaners &amp; dosing chemistry for pure water</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Control Valves</strong><small>Pentair, Fleck, Siata, Fluidra (Astral) &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>FRP Tanks</strong><small>Structural, Park, Pentair, Wave Cyber &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Pumps</strong><small>Grundfos, KSB, Xylem — Lowara/Goulds &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Resins</strong><small>Lanxess, Purolite, Dowex, Mitsubishi &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Filters / Housings</strong><small>Harmsco, Pall, Eaton, Donaldson &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>UV / Ozone Systems</strong><small>Xylem – WEDECO, Hanovia, Philips &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>PVC Pipe &amp; Fittings</strong><small>Hydroseal, +GF+ Swiss, Sanking Taiwan &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Laboratory Instruments</strong><small>Hach, Millipore/Merck, Sartorius &amp; more</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Beverage Equipment &amp; Lines</strong><small>Bottling, filling, water &amp; syrup treatment lines</small></span></div>
+    </div>
+    <div class="ro-modal-banner">
+      <p>Coming soon — <span>everything you need, right here in Saudi Arabia.</span></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openRoModal(){
+    document.getElementById('ro-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeRoModal(){
+    document.getElementById('ro-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('ro-modal-overlay').addEventListener('click', function(e){
+    if(e.target === this){ closeRoModal(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeRoModal(); closeFoodsModal(); }
+  });
+</script>
+
+<div class="ro-modal-overlay" id="foods-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="foods-modal-title">
+  <div class="ro-modal">
+    <button class="ro-modal-close" onclick="closeFoodsModal()" aria-label="Close">&times;</button>
+    <span class="ro-modal-eyebrow">Foods Sector</span>
+    <h3 id="foods-modal-title">Products We'll Deliver to Saudi Arabia</h3>
+    <p class="ro-modal-sub">A preview of the agricultural goods and soil enhancers our Foods sector will bring to Saudi Arabia — sourced, quality-checked and delivered with care.</p>
+    <div class="ro-categories">
+      <div class="ro-cat"><span class="dot"></span><span><strong>Kabuli Chickpeas</strong><small>Round, nutrient-dense pulses valued for their protein, fiber &amp; mineral content</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Red Lentils</strong><small>Lens-shaped pulses, harvested dry and prized for protein and essential nutrients</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Red Beans</strong><small>Sourced from trusted growers and processed for purity, taste &amp; nutrition</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Agricultural Goods</strong><small>Grains, pulses &amp; legumes handled end-to-end for global markets</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Gypsum</strong><small>Soil amendment supporting healthier, more productive farmland</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Carbon</strong><small>Soil enhancer supplied for sustainable, higher-yield agriculture</small></span></div>
+    </div>
+    <div class="ro-modal-banner">
+      <p>Coming soon — <span>everything you need, right here in Saudi Arabia.</span></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openFoodsModal(){
+    document.getElementById('foods-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFoodsModal(){
+    document.getElementById('foods-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('foods-modal-overlay').addEventListener('click', function(e){
+    if(e.target === this){ closeFoodsModal(); }
+  });
+</script>
 
 </body>
 </html>
