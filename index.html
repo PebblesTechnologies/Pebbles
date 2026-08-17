@@ -532,16 +532,10 @@
           <svg class="sector-art" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <rect width="120" height="120" fill="#F1EEE0"/>
             <rect x="0" y="90" width="120" height="30" fill="#DBE1CE"/>
-            <path d="M79 8 C79 8 68 22 68 30 a11 11 0 0 0 22 0 C90 22 79 8 79 8 Z" fill="#D8C79E"/>
-            <rect x="27" y="40" width="27" height="50" rx="7" fill="#336B5A"/>
-            <ellipse cx="40.5" cy="40" rx="13.5" ry="7" fill="#3E8069"/>
-            <rect x="27" y="60" width="27" height="6" fill="#9C8552"/>
-            <circle cx="40.5" cy="52" r="2.3" fill="#F1EEE0"/>
-            <rect x="65" y="30" width="27" height="60" rx="7" fill="#112922"/>
-            <ellipse cx="78.5" cy="30" rx="13.5" ry="7" fill="#1B3A2F"/>
-            <rect x="65" y="52" width="27" height="6" fill="#9C8552"/>
-            <circle cx="78.5" cy="42" r="2.3" fill="#F1EEE0"/>
-            <rect x="54" y="72" width="11" height="6" fill="#9C8552"/>
+            <path d="M60 20 C60 20 34 56 34 76 a26 26 0 0 0 52 0 C86 56 60 20 60 20 Z" fill="#336B5A"/>
+            <path d="M60 20 C60 20 34 56 34 76 a26 26 0 0 0 52 0 C86 56 60 20 60 20 Z" fill="none" stroke="#112922" stroke-width="2" opacity=".15"/>
+            <path d="M45 66 a17 17 0 0 0 10 20" stroke="#F1EEE0" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
+            <circle cx="46" cy="58" r="4" fill="#F1EEE0" opacity=".6"/>
           </svg>
           <div class="sector-overlay"></div>
           <span class="sector-label">RO Sector</span>
@@ -550,29 +544,21 @@
         <span class="sector-name">RO Sector</span>
       </div>
       <div class="sector">
-        <div class="sector-circle" onclick="openFoodsModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){openFoodsModal();}" aria-haspopup="dialog" aria-label="View Foods Sector product range">
+        <div class="sector-circle" onclick="openEcommerceModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){openEcommerceModal();}" aria-haspopup="dialog" aria-label="View E-Commerce Sector product range">
           <svg class="sector-art" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <rect width="120" height="120" fill="#F1EEE0"/>
-            <path d="M14 76 Q60 106 106 76 L106 92 Q60 118 14 92 Z" fill="#7C6A44"/>
-            <path d="M16 73 Q60 100 104 73 L100 85 Q60 106 20 85 Z" fill="#9C8552"/>
-            <path d="M16 73 Q60 100 104 73 Q60 84 16 73 Z" fill="#C9AE7C"/>
-            <ellipse cx="34" cy="60" rx="7.5" ry="7" fill="#D8C79E"/>
-            <path d="M34 53 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-            <ellipse cx="50" cy="48" rx="7.5" ry="7" fill="#E4D2A0"/>
-            <path d="M50 41 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-            <ellipse cx="67" cy="50" rx="7.5" ry="7" fill="#C9AE7C"/>
-            <path d="M67 43 q2 -3 4 -1" stroke="#7C6A44" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-            <ellipse cx="83" cy="60" rx="7.5" ry="7" fill="#D8C79E"/>
-            <path d="M83 53 q2 -3 4 -1" stroke="#B98D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-            <ellipse cx="42" cy="66" rx="7" ry="6.5" fill="#B98D55"/>
-            <ellipse cx="58" cy="62" rx="7" ry="6.5" fill="#E4D2A0"/>
-            <ellipse cx="75" cy="68" rx="7" ry="6.5" fill="#C9AE7C"/>
+            <rect x="0" y="94" width="120" height="26" fill="#DBE1CE"/>
+            <path d="M39 40 L81 40 L88 96 Q88 100 84 100 L36 100 Q32 100 32 96 Z" fill="#9C8552"/>
+            <path d="M39 40 L81 40 L83 52 L37 52 Z" fill="#7C6A44"/>
+            <path d="M47 40 q0 -16 13 -16 q13 0 13 16" stroke="#336B5A" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="60" cy="70" r="9" fill="#D8C79E"/>
+            <path d="M56 70 l3 4 l6 -8" stroke="#112922" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <div class="sector-overlay"></div>
-          <span class="sector-label">Foods Sector</span>
+          <span class="sector-label">E-Commerce</span>
           <span class="sector-cta">Click here</span>
         </div>
-        <span class="sector-name">Foods Sector</span>
+        <span class="sector-name">E-Commerce</span>
       </div>
     </div>
   </div>
@@ -654,23 +640,23 @@
     if(e.target === this){ closeRoModal(); }
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ closeRoModal(); closeFoodsModal(); }
+    if(e.key === 'Escape'){ closeRoModal(); closeEcommerceModal(); }
   });
 </script>
 
-<div class="ro-modal-overlay" id="foods-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="foods-modal-title">
+<div class="ro-modal-overlay" id="ecommerce-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ecommerce-modal-title">
   <div class="ro-modal">
-    <button class="ro-modal-close" onclick="closeFoodsModal()" aria-label="Close">&times;</button>
-    <span class="ro-modal-eyebrow">Foods Sector</span>
-    <h3 id="foods-modal-title">Products We'll Deliver to Saudi Arabia</h3>
-    <p class="ro-modal-sub">A preview of the agricultural goods and soil enhancers our Foods sector will bring to Saudi Arabia — sourced, quality-checked and delivered with care.</p>
+    <button class="ro-modal-close" onclick="closeEcommerceModal()" aria-label="Close">&times;</button>
+    <span class="ro-modal-eyebrow">E-Commerce Sector</span>
+    <h3 id="ecommerce-modal-title">Everything You Need, Delivered</h3>
+    <p class="ro-modal-sub">A preview of the online marketplace our E-Commerce sector will bring to Saudi Arabia — wide selection, secure payments and fast delivery, all in one place.</p>
     <div class="ro-categories">
-      <div class="ro-cat"><span class="dot"></span><span><strong>Kabuli Chickpeas</strong><small>Round, nutrient-dense pulses valued for their protein, fiber &amp; mineral content</small></span></div>
-      <div class="ro-cat"><span class="dot"></span><span><strong>Red Lentils</strong><small>Lens-shaped pulses, harvested dry and prized for protein and essential nutrients</small></span></div>
-      <div class="ro-cat"><span class="dot"></span><span><strong>Red Beans</strong><small>Sourced from trusted growers and processed for purity, taste &amp; nutrition</small></span></div>
-      <div class="ro-cat"><span class="dot"></span><span><strong>Agricultural Goods</strong><small>Grains, pulses &amp; legumes handled end-to-end for global markets</small></span></div>
-      <div class="ro-cat"><span class="dot"></span><span><strong>Gypsum</strong><small>Soil amendment supporting healthier, more productive farmland</small></span></div>
-      <div class="ro-cat"><span class="dot"></span><span><strong>Carbon</strong><small>Soil enhancer supplied for sustainable, higher-yield agriculture</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Wide Product Range</strong><small>Electronics, home, fashion &amp; everyday essentials in one marketplace</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Fast Delivery</strong><small>Reliable last-mile logistics powered by our own fleet network</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Secure Payments</strong><small>Trusted checkout with multiple safe payment options</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Verified Sellers</strong><small>Quality-checked vendors and products you can rely on</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Easy Returns</strong><small>Hassle-free returns and responsive customer support</small></span></div>
+      <div class="ro-cat"><span class="dot"></span><span><strong>Business &amp; Bulk Orders</strong><small>Tailored solutions for corporate and wholesale buyers</small></span></div>
     </div>
     <div class="ro-modal-banner">
       <p>Coming soon — <span>everything you need, right here in Saudi Arabia.</span></p>
@@ -679,16 +665,16 @@
 </div>
 
 <script>
-  function openFoodsModal(){
-    document.getElementById('foods-modal-overlay').classList.add('open');
+  function openEcommerceModal(){
+    document.getElementById('ecommerce-modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeFoodsModal(){
-    document.getElementById('foods-modal-overlay').classList.remove('open');
+  function closeEcommerceModal(){
+    document.getElementById('ecommerce-modal-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.getElementById('foods-modal-overlay').addEventListener('click', function(e){
-    if(e.target === this){ closeFoodsModal(); }
+  document.getElementById('ecommerce-modal-overlay').addEventListener('click', function(e){
+    if(e.target === this){ closeEcommerceModal(); }
   });
 </script>
 
